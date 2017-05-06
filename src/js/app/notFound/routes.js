@@ -1,9 +1,11 @@
 import React from 'react';
+import path from 'path';
 import { Route } from 'react-router-dom';
 import NotFoundView from './components';
 
-export default function notFoundRoutes(path) {
+
+export default function notFoundRoutes(basePath) {
   return (
-    <Route path={`${path}`} render={() => <NotFoundView />} />
+    <Route path={path.join(basePath, '/')} render={() => <NotFoundView />} />
   );
 }

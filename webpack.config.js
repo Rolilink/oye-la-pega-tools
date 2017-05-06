@@ -10,6 +10,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   entry: './src/js/app/index.js',
   output: {
+    publicPath: '/',
     path: path.resolve('static'),
     filename: 'bundle.js'
   },
@@ -18,6 +19,9 @@ module.exports = {
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   devtool: "cheap-module-eval-source-map",
   plugins: [HtmlWebpackPluginConfig]
