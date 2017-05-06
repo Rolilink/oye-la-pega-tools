@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class App extends React.PureComponent {
   render() {
@@ -12,7 +13,7 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
-  children: React.PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default function createApp({ store, Router, Provider }) {
