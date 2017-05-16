@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { LoginForm } from '../components';
 import { setSession, setAccessToken, destroySession } from '../actions';
 
-class AuthView extends React.Component {
-  onLogin(email, password) {
+class LoginView extends React.Component {
+  login(email, password) {
     // Login Logic
     console.log('login in with:', { email, password });
   }
@@ -14,8 +14,15 @@ class AuthView extends React.Component {
     return (
       <div className="container" id="authView">
         <div className="row" >
-          <div className="col-md-6 col-sm-12">
-            <LoginForm onLogin={(email, password) => this.onLogin(email, password)} />
+          <div className="col-md-6 col-md-offset-3 col-sm-12" style={{ marginTop: '150px' }}>
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h3 className="panel-title">Inicio de Sesion</h3>
+              </div>
+              <div className="panel-body">
+                <LoginForm onSubmit={(email, password) => this.login(email, password)} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -33,4 +40,4 @@ const mapDispatchToProps = {
   destroySession,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthView);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView);
