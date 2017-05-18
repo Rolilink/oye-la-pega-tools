@@ -1,13 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { LoginForm } from '../components';
-import { setSession, setAccessToken, destroySession } from '../actions';
+import { connectToLoginContainer } from '../containers';
 
 class LoginView extends React.Component {
+  static propTypes = {
+    loginWithEmailAndPassword: PropTypes.func.isRequired,
+  }
+
   login(email, password) {
-    // Login Logic
-    console.log('login in with:', { email, password });
+    this.props.loginWithEmailAndPassword(email, password);
   }
 
   render() {
@@ -30,14 +32,4 @@ class LoginView extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return state;
-};
-
-const mapDispatchToProps = {
-  setSession,
-  setAccessToken,
-  destroySession,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView);
+export default connectToLoginContainer(LoginView);
