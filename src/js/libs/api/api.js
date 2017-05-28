@@ -3,7 +3,7 @@ import superagent from 'superagent';
 import {
   API_HOST,
   EMAIL_LOGIN_PATH,
-} from '../../app/constants';
+} from './constants';
 
 class API {
   constructor(request) {

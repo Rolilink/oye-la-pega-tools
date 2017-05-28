@@ -15,7 +15,7 @@ const DotenvPlugin = new Dotenv({
 });
 
 module.exports = {
-  entry: './src/js/app/index.js',
+  entry: './src/js/index.js',
   output: {
     publicPath: '/',
     path: path.resolve('static'),

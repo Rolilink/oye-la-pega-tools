@@ -1,6 +1,6 @@
 import { setAccessToken, setSession } from './actions';
-import Api from '../../lib/api';
-import getSessionFromJWT from '../../lib/jwt';
+import Api from '../../libs/api';
+import getSessionFromJWT from '../../libs/jwt';
 
 export function loginWithEmailAndPassword(email, password) {
   return dispatch => (
