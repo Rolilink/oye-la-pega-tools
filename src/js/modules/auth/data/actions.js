@@ -1,6 +1,6 @@
-const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN';
-const SET_SESSION_USER = 'SET_SESSION_USER';
-const DESTROY_SESSION = 'DESTROY_SESSION';
+const SET_ACCESS_TOKEN = 'oye-la-pega-game/auth/SET_ACCESS_TOKEN';
+const SET_SESSION_USER = 'oye-la-pega-game/auth/SET_SESSION_USER';
+const DESTROY_SESSION = 'oye-la-pega-game/auth/DESTROY_SESSION';
 
 export function setAccessToken(accessToken) {
   return {

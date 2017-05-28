@@ -1,13 +1,10 @@
 /*
- * Authentication Feature
+ * Authentication Feature Module
  */
-import { combineReducers } from 'redux';
+
 import * as ui from './ui';
-import { actionTypes, actions } from './actions';
-import actionCreators from './actionsCreators';
-import * as reducers from './reducers';
+import * as data from './data';
 import routes from './routes';
+import constants from './constants';
 
-const reducer = combineReducers(reducers);
-
-export { ui, actionTypes, actions, routes, actionCreators, reducer };
+export { ui, routes, data, constants };
