@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LoginForm } from '../components';
+import LoginForm from './LoginForm';
 import { connectToLoginContainer } from '../containers';
 
 class LoginView extends React.Component {
@@ -31,5 +31,7 @@ class LoginView extends React.Component {
     );
   }
 }
+
+export const component = LoginView;
 
 export default connectToLoginContainer(LoginView);
