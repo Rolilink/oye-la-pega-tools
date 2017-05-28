@@ -1,8 +1,7 @@
 import React from 'react';
 import path from 'path';
 import { Route } from 'react-router-dom';
-import { LoginView } from './components';
-
+import LoginView from './ui/components/LoginView';
 
 export default function authRoutes(basePath) {
   return (

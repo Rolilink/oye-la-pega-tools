@@ -2,7 +2,7 @@
  * Game Feature:
  * Authentication Feature
  */
-import components from './components';
+import ui from './ui';
 import routes from './routes';
 
-export { components, routes };
+export { ui, routes };
