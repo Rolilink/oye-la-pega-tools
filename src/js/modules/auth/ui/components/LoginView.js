@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoginForm from './LoginForm';
-import { connectToLoginContainer } from '../containers';
+import connectToLoginContainer from '../containers/LoginContainer';
 
 class LoginView extends React.Component {
   static propTypes = {
