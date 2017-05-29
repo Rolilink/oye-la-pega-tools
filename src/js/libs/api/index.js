@@ -1,5 +1,5 @@
-import createAPI from './api';
+import getDeckList from './apiCalls/getDeckList';
+import loginWithEmailAndPassword from './apiCalls/loginWithEmailAndPassword';
+import getDeck from './apiCalls/getDeck';
 
-const api = createAPI();
-
-export default api;
+export { getDeckList, loginWithEmailAndPassword, getDeck };

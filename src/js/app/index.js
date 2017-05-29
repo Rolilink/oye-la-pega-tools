@@ -5,7 +5,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 import newApp from './app';
 import newRouter from './router';
+import * as API from '../libs/api';
 
+window.API = API;
 
 export function run(domElement) {
   const Router = newRouter();
