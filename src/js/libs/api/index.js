@@ -1,5 +1,15 @@
-import createAPI from './api';
+import getDeckListCall from './apiCalls/getDeckList';
+import loginWithEmailAndPasswordCall from './apiCalls/loginWithEmailAndPassword';
+import getDeckCall from './apiCalls/getDeck';
+import authApiDecorator from './authApiDecorator';
+import corsApiDecorator from './corsApiDecorator';
 
-const api = createAPI();
+const getDeck = authApiDecorator(getDeckCall);
+const getDeckList = authApiDecorator(getDeckListCall);
+const loginWithEmailAndPassword = corsApiDecorator(loginWithEmailAndPasswordCall);
 
-export default api;
+export {
+  loginWithEmailAndPassword,
+  getDeck,
+  getDeckList,
+};

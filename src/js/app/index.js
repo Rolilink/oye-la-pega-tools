@@ -6,7 +6,6 @@ import store from './store';
 import newApp from './app';
 import newRouter from './router';
 
-
 export function run(domElement) {
   const Router = newRouter();
   const App = newApp({ Provider, store, Router });
@@ -16,4 +15,6 @@ export function run(domElement) {
     ,
     document.getElementById(domElement),
   );
-};
+}
+
+export { store };

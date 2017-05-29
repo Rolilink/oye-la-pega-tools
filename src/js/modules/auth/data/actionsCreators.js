@@ -1,5 +1,5 @@
 import { setAccessToken, setSession } from './actions';
-import Api from '../../../libs/api';
+import * as Api from '../../../libs/api';
 import getSessionFromJWT from '../../../libs/jwt';
 
 export function loginWithEmailAndPassword(email, password) {
