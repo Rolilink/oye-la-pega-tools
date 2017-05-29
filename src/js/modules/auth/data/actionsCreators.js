@@ -4,7 +4,7 @@ import getSessionFromJWT from '../../../libs/jwt';
 
 export function loginWithEmailAndPassword(email, password) {
   return dispatch => (
-    Api.loginWithEmailAndPassword({ email, password })
+    Api.loginWithEmailAndPassword(email, password)
       .then((accessToken) => {
         dispatch(setAccessToken(accessToken));
         getSessionFromJWT(accessToken)

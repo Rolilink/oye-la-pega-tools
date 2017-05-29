@@ -19,3 +19,5 @@ export function run(domElement) {
     document.getElementById(domElement),
   );
 };
+
+export { store };
