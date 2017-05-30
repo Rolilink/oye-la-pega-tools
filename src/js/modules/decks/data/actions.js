@@ -17,7 +17,7 @@ export function setActiveDeck(deck) {
   };
 }
 
-export function setDeckListIsFetching(isFetching) {
+export function setDecksListIsFetching(isFetching) {
   return {
     type: SET_DECKS_LIST_IS_FETCHING,
     isFetching,

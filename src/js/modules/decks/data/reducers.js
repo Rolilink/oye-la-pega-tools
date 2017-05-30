@@ -3,7 +3,7 @@ import { actionTypes } from './actions';
 const decksInitialState = {
   decksList: {
     isFetching: false,
-    list: [],
+    decks: [],
   },
   activeDeck: {
     isFetching: false,
@@ -14,7 +14,7 @@ const decksInitialState = {
 export function decksList(state = decksInitialState.decksList, action) {
   switch (action.type) {
     case actionTypes.SET_DECKS_LIST:
-      return { ...state, list: action.decks };
+      return { ...state, decks: action.decks };
     case actionTypes.SET_DECKS_LIST_IS_FETCHING:
       return { ...state, isFetching: action.isFetching };
     default:

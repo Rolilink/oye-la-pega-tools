@@ -14,14 +14,14 @@ import { setDecksList, setDecksListIsFetching, setActiveDeck, setActiveDeckIsFet
   )
 */
 
-export function fetchDeckList() {
+export function fetchDecksList() {
   return (dispatch) => {
     dispatch(setDecksListIsFetching(true));
 
     return Api.getDeckList()
       .then((res) => {
         dispatch(setDecksListIsFetching(false));
-        dispatch(setDecksList(res.body));
+        dispatch(setDecksList(res));
       });
   };
 }
@@ -33,7 +33,7 @@ export function fetchAndSetActiveDeck(deckId) {
     return Api.getDeck(deckId)
       .then((res) => {
         dispatch(setActiveDeckIsFetching(false));
-        dispatch(setActiveDeck(res.body));
+        dispatch(setActiveDeck(res));
       });
   };
 }
