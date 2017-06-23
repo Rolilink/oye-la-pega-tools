@@ -5,7 +5,7 @@ import {
   setNewRound,
   setGame,
   pickWinnersAndStartNewRound,
-  markAllQuestionsAsBoringAndStartNewRound,
+  markAllAnswersAsBoringAndStartNewRound,
 } from './actionsCreators';
 
 const reducer = combineReducers(reducers);
@@ -16,7 +16,7 @@ export {
   setNewRound,
   setGame,
   pickWinnersAndStartNewRound,
-  markAllQuestionsAsBoringAndStartNewRound,
+  markAllAnswersAsBoringAndStartNewRound,
 };
 
 export default reducer;

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { setActiveDeckId, setQuestion, setAnswers, addRoundToHistory, setRequiredAnswers } from './actions';
+import { setActiveDeckId, setQuestion, setAnswers, addRoundToHistory, setRequiredAnswers, initializeRound } from './actions';
 
 export function setNewRound() {
   return (dispatch, getState) => (
@@ -10,6 +10,8 @@ export function setNewRound() {
       const question = _.sample(deck.question);
       const requiredAnswers = question.answers;
 
+      dispatch(initializeRound());
+      dispatch(setActiveDeckId(deck.id));
       dispatch(setQuestion(question));
       dispatch(setRequiredAnswers(requiredAnswers));
       dispatch(setAnswers(answers));
@@ -17,16 +19,6 @@ export function setNewRound() {
       resolve({ deck, question, answers, requiredAnswers });
     })
   );
-}
-
-export function setGame() {
-  return (dispatch, getState) => {
-    const { activeDeck } = getState();
-    const { deck } = activeDeck;
-
-    dispatch(setActiveDeckId(deck.id));
-    return setNewRound();
-  };
 }
 
 export function pickWinnersAndStartNewRound(winnerAnswers) {
@@ -44,7 +36,7 @@ export function pickWinnersAndStartNewRound(winnerAnswers) {
   );
 }
 
-export function markAllQuestionsAsBoringAndStartNewRound() {
+export function markAllAnswersAsBoringAndStartNewRound() {
   return (dispatch, getState) => (
     new Promise((resolve) => {
       const { game } = getState();

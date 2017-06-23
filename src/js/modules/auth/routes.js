@@ -6,6 +6,9 @@ import { LOGIN_VIEW_PATH } from './constants';
 
 export default function authRoutes(basePath) {
   return (
-    <Route path={path.join(basePath, LOGIN_VIEW_PATH)} render={() => <LoginView />} />
+    <Route
+      path={path.join(basePath, LOGIN_VIEW_PATH)}
+      render={({ history }) => <LoginView routerHistory={history} />}
+    />
   );
 }

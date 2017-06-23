@@ -9,7 +9,8 @@ class LoginView extends React.Component {
   }
 
   login(email, password) {
-    this.props.loginWithEmailAndPassword(email, password);
+    this.props.loginWithEmailAndPassword(email, password)
+    .then(() => this.props.routerHistory.push('/decks/list'));
   }
 
   render() {

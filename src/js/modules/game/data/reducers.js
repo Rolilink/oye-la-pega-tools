@@ -6,6 +6,7 @@ const gameInitialState = {
     answers: [],
     question: {},
     requiredAnswers: 0,
+    winnerAnswers: [],
   },
   history: {
     rounds: [],
@@ -20,6 +21,8 @@ export function round(state = gameInitialState.round, action) {
       return { ...state, question: action.question };
     case actionTypes.SET_ANSWERS:
       return { ...state, answers: action.answers };
+    case actionTypes.INITIALIZE_ROUND:
+      return gameInitialState.round;
     default:
       return state;
   }

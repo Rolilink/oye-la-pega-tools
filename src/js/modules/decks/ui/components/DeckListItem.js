@@ -6,13 +6,13 @@ import { GAME_DECK_PATH } from '../../constants';
 
 export default class DeckListItem extends React.PureComponent {
   static propTypes = {
-    deck: PropTypes.arrayOf(PropTypes.any).isRequired,
+    deck: PropTypes.object.isRequired,
   };
 
   get selectDeckLink() {
     const { deck } = this.props;
 
-    return joinPath(GAME_DECK_PATH, deck.id);
+    return joinPath('/', GAME_DECK_PATH, `${deck.id}`);
   }
 
   render() {
