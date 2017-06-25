@@ -1,6 +1,6 @@
 import defaults from 'superagent-defaults';
 import _ from 'lodash';
-import { store } from '../../app';
+import { store } from '../../../app';
 
 export default function decorateApiCall(apiCall) {
   return (...rArgs) => {

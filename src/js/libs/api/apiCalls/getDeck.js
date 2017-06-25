@@ -11,7 +11,7 @@ export default function getDeck(deckId = '', request = superagent) {
           return reject(err);
         }
 
-        return resolve(res.body.access_token);
+        return resolve(res.body);
       });
   });
 }
