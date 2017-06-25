@@ -1,6 +1,7 @@
 import React from 'react';
 import AnswerSection from './AnswerSection';
 import QuestionSection from './QuestionSection';
+import styles from '../styles/index.css';
 
 
 export default class Game extends React.Component {
