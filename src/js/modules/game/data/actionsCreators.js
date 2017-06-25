@@ -7,7 +7,7 @@ export function setNewRound() {
       const { decks } = getState();
       const { activeDeck } = decks;
       const { deck } = activeDeck;
-      const answers = _.sampleSize(deck.answers, 10);
+      const answers = _.sampleSize(deck.answers, 9);
       const question = _.sample(deck.questions);
       const requiredAnswers = question.answers;
 

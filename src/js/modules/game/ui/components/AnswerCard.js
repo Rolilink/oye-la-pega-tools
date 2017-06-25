@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/AnswerCard.css';
 
 export default class AnswerCard extends React.PureComponent {
 
@@ -12,7 +13,7 @@ export default class AnswerCard extends React.PureComponent {
     const { text } = this.props.card;
 
     return (
-      <div className={`card answer-card ${this.isSelectedClass}`} onClick={this.props.onClick}>
+      <div className={`Card AnswerCard ${this.isSelectedClass}`} onClick={this.props.onClick}>
         <p className="card-text">{text}</p>
       </div>
     );

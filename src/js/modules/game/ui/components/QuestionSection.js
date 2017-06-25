@@ -1,12 +1,14 @@
 import React from 'react';
+import _ from 'lodash';
 import QuestionCard from './QuestionCard';
+import '../styles/QuestionSection.css'
 
 export default class QuestionSection extends React.PureComponent {
 
   get questionCard() {
     const { question } = this.props;
 
-    if (!question) {
+    if (_.isEmpty(question)) {
       return null;
     }
 

@@ -1,0 +1,20 @@
+.AnswerSection {
+  width: 100vw;
+  height: 65vh;
+  padding: 0 15%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.AnswerSection .Hand {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: center;
+}

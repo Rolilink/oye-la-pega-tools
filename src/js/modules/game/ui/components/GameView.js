@@ -9,9 +9,11 @@ export default class GameView extends React.Component {
     const { gameId } = this.props;
 
     return (
-      <GameContainer>
-        <Game gameId={gameId} />
-      </GameContainer>
+      <div className="GameView">
+        <GameContainer>
+          <Game gameId={gameId} />
+        </GameContainer>
+      </div>
     );
   }
 }

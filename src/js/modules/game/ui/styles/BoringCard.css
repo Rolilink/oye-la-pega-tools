@@ -1,0 +1,15 @@
+@import "./Card.css";
+
+:root {
+  --boringcardBackground: #40433B;
+  --cardHoverBlackness: +10%;
+}
+
+.BoringCard {
+  background-color: color(var(--boringcardBackground));
+}
+
+.BoringCard:hover {
+  cursor: pointer;
+  background-color: color(var(--boringcardBackground) blackness(var(--cardHoverBlackness)));
+}

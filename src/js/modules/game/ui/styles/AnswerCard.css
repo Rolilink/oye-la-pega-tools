@@ -1,0 +1,15 @@
+@import "./Card.css";
+
+:root {
+  --answercardBackground: #1E8CE0;
+  --cardHoverBlackness: +10%;
+}
+
+.AnswerCard {
+  background-color: color(var(--answercardBackground));
+}
+
+.AnswerCard:hover {
+  cursor: pointer;
+  background-color: color(var(--answercardBackground) blackness(var(--cardHoverBlackness)));
+}

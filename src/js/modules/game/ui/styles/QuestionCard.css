@@ -1,0 +1,9 @@
+@import "./Card.css";
+
+:root {
+  --questioncardBackground: #F64744;;
+}
+
+.QuestionCard {
+  background-color: color(var(--questioncardBackground));
+}

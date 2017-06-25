@@ -1,10 +1,16 @@
 import React from 'react';
 import AnswerCard from './AnswerCard';
+import BoringCard from './BoringCard';
+import '../styles/AnswerSection.css';
 
 export default class AnswerSection extends React.PureComponent {
 
   get answerCards() {
     return this.answers.map(answer => this.getAnswerCard(answer));
+  }
+
+  get boringCard() {
+    return this.answers.length > 0 ? <BoringCard /> : null;
   }
 
   get answers() {
@@ -22,7 +28,10 @@ export default class AnswerSection extends React.PureComponent {
   render() {
     return (
       <div className="AnswerSection">
-        {this.answerCards}
+        <div className="Hand">
+          {this.answerCards}
+          {this.boringCard}
+        </div>
       </div>
     );
   }

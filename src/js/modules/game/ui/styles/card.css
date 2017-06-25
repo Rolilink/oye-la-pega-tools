@@ -1,3 +1,13 @@
-.card {
-  border-radius: 10px;
+.Card {
+  border-radius: 5px;
+  color: white;
+  padding: 0px 25px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 5px;
+  width: 150px;
+  height: 200px;
+  font-size: 12px;
 }
