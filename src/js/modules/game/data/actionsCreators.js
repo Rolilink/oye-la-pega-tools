@@ -8,8 +8,7 @@ export function setNewRound() {
       const { activeDeck } = decks;
       const { deck } = activeDeck;
       const answers = _.sampleSize(deck.answers, 9);
-      const question = _.find(deck.questions, q => q.answers === 2);
-      //const question = _.sample(deck.questions);
+      const question = _.sample(deck.questions);
       const requiredAnswers = question.answers;
 
       dispatch(initializeRound());
