@@ -6,14 +6,14 @@ export default class AnswerCard extends React.PureComponent {
   get isSelectedClass() {
     const { isSelected } = this.props;
 
-    return isSelected ? 'card-selected' : '';
+    return isSelected ? 'Selected' : '';
   }
 
   render() {
     const { text } = this.props.card;
 
     return (
-      <div className={`Card AnswerCard ${this.isSelectedClass}`} onClick={this.props.onClick}>
+      <div className={`Card AnswerCard ${this.isSelectedClass}`} onClick={e => this.props.onClick(this.props.card)}>
         <p className="card-text">{text}</p>
       </div>
     );

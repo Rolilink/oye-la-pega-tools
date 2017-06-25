@@ -6,17 +6,17 @@ export default class QuestionCard extends React.PureComponent {
     const { text } = this.props.card;
 
     return text
-      .replace('[respuesta]', '________')
-      .replace('[persona a la derecha]', 'la persona a mi derecha')
-      .replace('[persona a la izquierda]', 'la persona a mi izquierda')
-      .concat('.')
+      .replace(/\[respuesta\]/g, '________')
+      .replace(/\[persona a la derecha\]/, 'la persona a mi derecha')
+      .replace(/\[persona a la izquierda\]/, 'la persona a mi izquierda')
+      .concat('.');
   }
 
   render() {
     const { text } = this.props.card;
 
     return (
-      <div className={`Card QuestionCard ${this.isSelectedClass}`}>
+      <div className="Card QuestionCard">
         <p className="card-text">{this.formattedText}</p>
       </div>
     );

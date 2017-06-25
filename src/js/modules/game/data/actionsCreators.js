@@ -8,7 +8,8 @@ export function setNewRound() {
       const { activeDeck } = decks;
       const { deck } = activeDeck;
       const answers = _.sampleSize(deck.answers, 9);
-      const question = _.sample(deck.questions);
+      const question = _.find(deck.questions, q => q.answers === 2);
+      //const question = _.sample(deck.questions);
       const requiredAnswers = question.answers;
 
       dispatch(initializeRound());
@@ -22,7 +23,7 @@ export function setNewRound() {
   );
 }
 
-export function pickWinnersAndStartNewRound(winnerAnswers) {
+export function pickWinners(winnerAnswers) {
   return (dispatch, getState) => (
     new Promise((resolve) => {
       const { game } = getState();
@@ -30,14 +31,13 @@ export function pickWinnersAndStartNewRound(winnerAnswers) {
       const roundToAdd = { ...round, winnerAnswers };
 
       dispatch(addRoundToHistory(roundToAdd));
-      setNewRound();
 
       resolve({ winnerAnswers, round });
     })
   );
 }
 
-export function markAllAnswersAsBoringAndStartNewRound() {
+export function markAllAnswersAsBoring() {
   return (dispatch, getState) => (
     new Promise((resolve) => {
       const { game } = getState();
@@ -46,7 +46,6 @@ export function markAllAnswersAsBoringAndStartNewRound() {
       const roundToAdd = { ...round, boringAnswers };
 
       dispatch(addRoundToHistory(roundToAdd));
-      setNewRound();
 
       resolve({ boringAnswers, round });
     })

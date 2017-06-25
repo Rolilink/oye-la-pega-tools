@@ -1,6 +1,6 @@
 .QuestionSection {
   width: 100vw;
-  height: 35vh;
+  height: 30vh;
   position: relative; /* Allows @util: center to center object */
 }
 

@@ -9,7 +9,7 @@ export function setRequiredAnswers(requiredAnswers) {
   return {
     type: SET_REQUIRED_ANSWERS,
     requiredAnswers,
-  }
+  };
 }
 
 export function setActiveDeckId(deckId) {
@@ -52,4 +52,5 @@ export const actionTypes = {
   SET_ANSWERS,
   ADD_ROUND_TO_HISTORY,
   INITIALIZE_ROUND,
+  SET_REQUIRED_ANSWERS,
 };

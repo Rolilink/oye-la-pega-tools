@@ -4,8 +4,8 @@ import { actionTypes as actions } from './actions';
 import {
   setNewRound,
   setGame,
-  pickWinnersAndStartNewRound,
-  markAllAnswersAsBoringAndStartNewRound,
+  pickWinners,
+  markAllAnswersAsBoring,
 } from './actionsCreators';
 
 const reducer = combineReducers(reducers);
@@ -15,8 +15,8 @@ export {
   actions,
   setNewRound,
   setGame,
-  pickWinnersAndStartNewRound,
-  markAllAnswersAsBoringAndStartNewRound,
+  pickWinners,
+  markAllAnswersAsBoring,
 };
 
 export default reducer;

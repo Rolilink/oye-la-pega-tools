@@ -3,6 +3,7 @@
 :root {
   --answercardBackground: #1E8CE0;
   --cardHoverBlackness: +10%;
+  --cardSelectedBlackness: +50%;
 }
 
 .AnswerCard {
@@ -12,4 +13,8 @@
 .AnswerCard:hover {
   cursor: pointer;
   background-color: color(var(--answercardBackground) blackness(var(--cardHoverBlackness)));
+}
+
+.AnswerCard.Selected {
+  background-color: color(var(--answercardBackground) blackness(var(--cardSelectedBlackness)));
 }

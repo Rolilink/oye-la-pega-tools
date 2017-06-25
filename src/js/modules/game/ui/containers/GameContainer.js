@@ -5,8 +5,8 @@ import _ from 'lodash';
 import { data as decksData } from '../../../decks';
 import {
   setNewRound,
-  pickWinnersAndStartNewRound,
-  markAllAnswersAsBoringAndStartNewRound,
+  pickWinners,
+  markAllAnswersAsBoring,
 } from '../../data';
 
 const { fetchAndSetActiveDeck } = decksData;
@@ -21,8 +21,8 @@ class GameContainer extends React.Component {
     question: PropTypes.any.isRequired,
     requiredAnswers: PropTypes.number.isRequired,
     setNewRound: PropTypes.func.isRequired,
-    pickWinnersAndStartNewRound: PropTypes.func.isRequired,
-    markAllAnswersAsBoringAndStartNewRound: PropTypes.func.isRequired,
+    pickWinners: PropTypes.func.isRequired,
+    markAllAnswersAsBoring: PropTypes.func.isRequired,
     fetchAndSetActiveDeck: PropTypes.func.isRequired,
   }
 
@@ -39,12 +39,9 @@ class GameContainer extends React.Component {
       answers,
       question,
       selectedAnswers,
-      allAnswersSelected: this.allAnswersSelected,
-      onSelectWinners: () => this.pickAnswers(),
       onMarkAllAsBoring: () => this.markAllAsBoring(),
       selectAnswer: answerId => this.selectAnswer(answerId),
       deselectAnswer: answerId => this.deselectAnswer(answerId),
-      startNewRound: () => this.startNewRound(),
       startNewGame: deckId => this.startNewGame(deckId),
     };
   }
@@ -63,37 +60,36 @@ class GameContainer extends React.Component {
     return selectedAnswers.length === requiredAnswers;
   }
 
-  selectAnswer(answerId) {
-    const { answers } = this.props;
+  selectAnswer(selectedAnswer) {
+    const { requiredAnswers } = this.props;
     const { selectedAnswers } = this.state;
 
-    if (!this.allAnswersSelected) {
-      return;
+    if (selectedAnswers.length + 1 === requiredAnswers) {
+      this.pickWinners([...selectedAnswers, selectedAnswer]);
     }
-
-    const selectedAnswer = _.find(answers, answer => answer.id === answerId);
 
     this.setState({ selectedAnswers: [...selectedAnswers, selectedAnswer] });
   }
 
-  deselectAnswer(answerId) {
+  deselectAnswer(selectedAnswer) {
     const { selectedAnswers } = this.state;
-    const newSelectedAnswers = _.omitBy(selectedAnswers, answer => answer.id === answerId);
+    const newSelectedAnswers = _.omitBy(selectedAnswers, answer => answer.id === selectedAnswer.id);
 
     this.setState({ selectedAnswers: newSelectedAnswers });
   }
 
   markAllAsBoring() {
-    this.props.markAllAnswersAsBoringAndStartNewRound();
+    this.props.markAllAnswersAsBoring()
+      .then(() => this.startNewRound());
   }
 
-  pickAnswers() {
-    const { selectedAnswers } = this.state;
-
-    this.props.pickWinnersAndStartNewRound(selectedAnswers);
+  pickWinners(selectedAnswers) {
+    this.props.pickWinners(selectedAnswers)
+      .then(() => this.startNewRound());
   }
 
   startNewRound() {
+    this.setState(getInitialState());
     this.props.setNewRound();
   }
 
@@ -109,8 +105,8 @@ class GameContainer extends React.Component {
 
 const mapDispatchToProps = {
   setNewRound,
-  pickWinnersAndStartNewRound,
-  markAllAnswersAsBoringAndStartNewRound,
+  pickWinners,
+  markAllAnswersAsBoring,
   fetchAndSetActiveDeck,
 };
 

@@ -18,8 +18,6 @@ export default class Game extends React.Component {
         <AnswerSection
           answers={this.props.answers}
           selectedAnswers={this.props.selectedAnswers}
-          allAnswersSelected={this.props.allAnswersSelected}
-          onSelectCardsClick={this.props.onSelectWinners}
           onBoringButttonClick={this.props.onMarkAllAsBoring}
           onCardSelect={this.props.selectAnswer}
           onCardDeselect={this.props.deselectAnswer}
