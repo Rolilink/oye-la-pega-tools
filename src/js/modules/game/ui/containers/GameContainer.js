@@ -1,13 +1,15 @@
-import React from 'react-redux';
-import { connect } from 'redux';
+import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-
+import { data as decksData } from '../../../decks';
 import {
   setNewRound,
   pickWinnersAndStartNewRound,
   markAllAnswersAsBoringAndStartNewRound,
 } from '../../data';
+
+const { fetchAndSetActiveDeck } = decksData;
 
 function getInitialState() {
   return { selectedAnswers: [] };
@@ -16,11 +18,12 @@ function getInitialState() {
 class GameContainer extends React.Component {
   static propTypes = {
     answers: PropTypes.arrayOf(PropTypes.any).isRequired,
-    question: PropTypes.Object.isRequired,
+    question: PropTypes.any.isRequired,
     requiredAnswers: PropTypes.number.isRequired,
     setNewRound: PropTypes.func.isRequired,
     pickWinnersAndStartNewRound: PropTypes.func.isRequired,
     markAllAnswersAsBoringAndStartNewRound: PropTypes.func.isRequired,
+    fetchAndSetActiveDeck: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -42,6 +45,7 @@ class GameContainer extends React.Component {
       selectAnswer: answerId => this.selectAnswer(answerId),
       deselectAnswer: answerId => this.deselectAnswer(answerId),
       startNewRound: () => this.startNewRound(),
+      startNewGame: deckId => this.startNewGame(deckId),
     };
   }
 
@@ -93,6 +97,11 @@ class GameContainer extends React.Component {
     this.props.setNewRound();
   }
 
+  startNewGame(deckId) {
+    this.props.fetchAndSetActiveDeck(deckId)
+      .then(() => this.startNewRound());
+  }
+
   render() {
     return <div>{this.childrenWithProps}</div>;
   }
@@ -102,13 +111,17 @@ const mapDispatchToProps = {
   setNewRound,
   pickWinnersAndStartNewRound,
   markAllAnswersAsBoringAndStartNewRound,
+  fetchAndSetActiveDeck,
 };
 
 const mapStateToProps = (state) => {
-  const { game } = state;
+  const { game, decks } = state;
   const { round } = game;
+  const { answers, question, requiredAnswers } = round;
+  const { activeDeck } = decks;
+  const { deck } = activeDeck;
 
-  return { round };
+  return { answers, question, requiredAnswers, activeDeck: deck };
 };
 
 export const component = GameContainer;

@@ -21,6 +21,8 @@ export function round(state = gameInitialState.round, action) {
       return { ...state, question: action.question };
     case actionTypes.SET_ANSWERS:
       return { ...state, answers: action.answers };
+    case actionTypes.SET_REQUIRED_ANSWERS:
+      return { ...state, requiredAnswers: action.requiredAnswers };
     case actionTypes.INITIALIZE_ROUND:
       return gameInitialState.round;
     default:

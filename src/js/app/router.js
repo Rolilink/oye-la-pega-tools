@@ -7,6 +7,7 @@ import {
 import { routes as notFoundRoutes } from '../modules/notFound';
 import { routes as authRoutes } from '../modules/auth';
 import { routes as deckRoutes } from '../modules/decks';
+import { routes as gameRoutes } from '../modules/game';
 
 export default function createRouter() {
   return (
@@ -14,6 +15,7 @@ export default function createRouter() {
       <Switch>
         {authRoutes('/auth')}
         {deckRoutes('/decks')}
+        {gameRoutes('/games')}
         {notFoundRoutes('')}
       </Switch>
     </Router>

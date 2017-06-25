@@ -4,10 +4,11 @@ import { setActiveDeckId, setQuestion, setAnswers, addRoundToHistory, setRequire
 export function setNewRound() {
   return (dispatch, getState) => (
     new Promise((resolve) => {
-      const { activeDeck } = getState();
+      const { decks } = getState();
+      const { activeDeck } = decks;
       const { deck } = activeDeck;
       const answers = _.sampleSize(deck.answers, 10);
-      const question = _.sample(deck.question);
+      const question = _.sample(deck.questions);
       const requiredAnswers = question.answers;
 
       dispatch(initializeRound());

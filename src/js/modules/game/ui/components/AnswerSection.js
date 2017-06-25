@@ -1,5 +1,5 @@
 import React from 'react';
-import AnswerCard from './cards/AnswerCard';
+import AnswerCard from './AnswerCard';
 
 export default class AnswerSection extends React.PureComponent {
 

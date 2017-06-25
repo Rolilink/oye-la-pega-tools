@@ -1,9 +1,14 @@
 import React from 'react';
+import AnswerSection from './AnswerSection';
+import QuestionSection from './QuestionSection';
+
 
 export default class Game extends React.Component {
 
   componentDidMount() {
-    this.props.startNewRound();
+    const { gameId } = this.props;
+
+    this.props.startNewGame(gameId);
   }
 
   render() {

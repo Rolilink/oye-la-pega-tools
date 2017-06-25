@@ -3,6 +3,14 @@ const SET_QUESTION = 'oye-la-pega-tools/game/SET_QUESTION';
 const SET_ANSWERS = 'oye-la-pega-tools/game/SET_ANSWERS';
 const ADD_ROUND_TO_HISTORY = 'oye-la-pega-tools/game/ADD_ROUND_TO_HISTORY';
 const INITIALIZE_ROUND = 'oye-la-pega-tools/game/INITIALIZE_ROUND';
+const SET_REQUIRED_ANSWERS = 'oye-la-pega-tools/game/SET_REQUIRED_ANSWERS';
+
+export function setRequiredAnswers(requiredAnswers) {
+  return {
+    type: SET_REQUIRED_ANSWERS,
+    requiredAnswers,
+  }
+}
 
 export function setActiveDeckId(deckId) {
   return {
