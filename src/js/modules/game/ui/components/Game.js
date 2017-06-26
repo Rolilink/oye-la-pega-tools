@@ -1,14 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AnswerSection from './AnswerSection';
 import QuestionSection from './QuestionSection';
 
 
 export default class Game extends React.Component {
 
-  componentDidMount() {
-    const { gameId } = this.props;
+  static propTypes = {
+    answers: PropTypes.arrayOf(PropTypes.any).isRequired,
+    question: PropTypes.any.isRequired,
+    selectedAnswers: PropTypes.arrayOf(PropTypes.any).isRequired,
+    onMarkAllAsBoring: PropTypes.func.isRequired,
+    selectAnswer: PropTypes.func.isRequired,
+    deselectAnswer: PropTypes.func.isRequired,
+    startNewGame: PropTypes.func.isRequired,
+  };
 
-    this.props.startNewGame(gameId);
+  componentDidMount() {
+    this.props.startNewGame();
   }
 
   render() {
@@ -18,7 +27,7 @@ export default class Game extends React.Component {
         <AnswerSection
           answers={this.props.answers}
           selectedAnswers={this.props.selectedAnswers}
-          onBoringButttonClick={this.props.onMarkAllAsBoring}
+          onBoringButtonClick={this.props.onMarkAllAsBoring}
           onCardSelect={this.props.selectAnswer}
           onCardDeselect={this.props.deselectAnswer}
         />

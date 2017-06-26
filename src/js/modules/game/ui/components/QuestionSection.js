@@ -1,9 +1,14 @@
 import React from 'react';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import QuestionCard from './QuestionCard';
-import '../styles/QuestionSection.css'
+import '../styles/QuestionSection.css';
 
 export default class QuestionSection extends React.PureComponent {
+
+  static propTypes = {
+    question: PropTypes.any.isRequired,
+  }
 
   get questionCard() {
     const { question } = this.props;
@@ -12,7 +17,7 @@ export default class QuestionSection extends React.PureComponent {
       return null;
     }
 
-    return <QuestionCard card={question} />
+    return <QuestionCard card={question} />;
   }
 
   render() {

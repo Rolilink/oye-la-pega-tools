@@ -17,6 +17,7 @@ function getInitialState() {
 
 class GameContainer extends React.Component {
   static propTypes = {
+    gameId: PropTypes.string.isRequired,
     answers: PropTypes.arrayOf(PropTypes.any).isRequired,
     question: PropTypes.any.isRequired,
     requiredAnswers: PropTypes.number.isRequired,
@@ -24,6 +25,7 @@ class GameContainer extends React.Component {
     pickWinners: PropTypes.func.isRequired,
     markAllAnswersAsBoring: PropTypes.func.isRequired,
     fetchAndSetActiveDeck: PropTypes.func.isRequired,
+    children: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -42,15 +44,12 @@ class GameContainer extends React.Component {
       onMarkAllAsBoring: () => this.markAllAsBoring(),
       selectAnswer: answerId => this.selectAnswer(answerId),
       deselectAnswer: answerId => this.deselectAnswer(answerId),
-      startNewGame: deckId => this.startNewGame(deckId),
+      startNewGame: () => this.startNewGame(this.props.gameId),
     };
   }
 
   get childrenWithProps() {
-    return React.Children.map(
-      this.props.children,
-      child => React.cloneElement(child, this.propsToPass)
-    );
+    return this.props.children(this.propsToPass);
   }
 
   get allAnswersSelected() {

@@ -1,5 +1,53 @@
 import _ from 'lodash';
-import { setActiveDeckId, setQuestion, setAnswers, addRoundToHistory, setRequiredAnswers, initializeRound } from './actions';
+import {
+  SET_REQUIRED_ANSWERS,
+  SET_ACTIVE_DECK_ID,
+  SET_QUESTION,
+  SET_ANSWERS,
+  ADD_ROUND_TO_HISTORY,
+  INITIALIZE_ROUND,
+} from './actionTypes';
+
+export function setRequiredAnswers(requiredAnswers) {
+  return {
+    type: SET_REQUIRED_ANSWERS,
+    requiredAnswers,
+  };
+}
+
+export function setActiveDeckId(deckId) {
+  return {
+    type: SET_ACTIVE_DECK_ID,
+    deckId,
+  };
+}
+
+export function setQuestion(question) {
+  return {
+    type: SET_QUESTION,
+    question,
+  };
+}
+
+export function setAnswers(answers) {
+  return {
+    type: SET_ANSWERS,
+    answers,
+  };
+}
+
+export function addRoundToHistory(round) {
+  return {
+    type: ADD_ROUND_TO_HISTORY,
+    round,
+  };
+}
+
+export function initializeRound() {
+  return {
+    type: INITIALIZE_ROUND,
+  };
+}
 
 export function setNewRound() {
   return (dispatch, getState) => (

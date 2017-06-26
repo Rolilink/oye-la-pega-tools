@@ -1,7 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../styles/AnswerCard.css';
 
 export default class AnswerCard extends React.PureComponent {
+  static propTypes = {
+    isSelected: PropTypes.bool.isRequired,
+    card: PropTypes.any.isRequired,
+    onClick: PropTypes.func.isRequired,
+  }
 
   get isSelectedClass() {
     const { isSelected } = this.props;

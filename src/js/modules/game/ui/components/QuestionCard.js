@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../styles/QuestionCard.css';
 
 export default class QuestionCard extends React.PureComponent {
+  static propTypes = {
+    card: PropTypes.any.isRequired,
+  }
+
   get formattedText() {
     const { text } = this.props.card;
 

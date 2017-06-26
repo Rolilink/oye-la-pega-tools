@@ -1,12 +1,18 @@
 import { combineReducers } from 'redux';
 import * as reducers from './reducers';
-import { actionTypes as actions } from './actions';
+import actions from './actionTypes';
 import {
   setNewRound,
   setGame,
   pickWinners,
   markAllAnswersAsBoring,
-} from './actionsCreators';
+  setRequiredAnswers,
+  setActiveDeckId,
+  setQuestion,
+  setAnswers,
+  addRoundToHistory,
+  initializeRound,
+} from './actionCreators';
 
 const reducer = combineReducers(reducers);
 
