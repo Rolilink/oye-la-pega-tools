@@ -20,6 +20,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",
+    "mixpanel-browser": "^2.11.1",
     "moment": "^2.18.1",
     "postcss-utilities": "^0.7.0",
     "prop-types": "^15.5.10",
