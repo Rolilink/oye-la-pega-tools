@@ -1,0 +1,9 @@
+.QuestionSection {
+  width: 100vw;
+  height: 30vh;
+  position: relative; /* Allows @util: center to center object */
+}
+
+.QuestionSection .Card.QuestionCard {
+  @util center;
+}

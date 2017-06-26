@@ -1,4 +1,11 @@
-import { actionTypes } from './actions';
+import {
+  SET_ACTIVE_DECK_ID,
+  SET_QUESTION,
+  SET_ANSWERS,
+  SET_REQUIRED_ANSWERS,
+  INITIALIZE_ROUND,
+  ADD_ROUND_TO_HISTORY,
+} from './actionTypes';
 
 const gameInitialState = {
   round: {
@@ -6,6 +13,7 @@ const gameInitialState = {
     answers: [],
     question: {},
     requiredAnswers: 0,
+    winnerAnswers: [],
   },
   history: {
     rounds: [],
@@ -14,12 +22,16 @@ const gameInitialState = {
 
 export function round(state = gameInitialState.round, action) {
   switch (action.type) {
-    case actionTypes.SET_ACTIVE_DECK_ID:
+    case SET_ACTIVE_DECK_ID:
       return { ...state, deckId: action.deckId };
-    case actionTypes.SET_QUESTION:
+    case SET_QUESTION:
       return { ...state, question: action.question };
-    case actionTypes.SET_ANSWERS:
+    case SET_ANSWERS:
       return { ...state, answers: action.answers };
+    case SET_REQUIRED_ANSWERS:
+      return { ...state, requiredAnswers: action.requiredAnswers };
+    case INITIALIZE_ROUND:
+      return gameInitialState.round;
     default:
       return state;
   }
@@ -27,7 +39,7 @@ export function round(state = gameInitialState.round, action) {
 
 export function history(state = gameInitialState.history, action) {
   switch (action.type) {
-    case actionTypes.ADD_ROUND_TO_HISTORY:
+    case ADD_ROUND_TO_HISTORY:
       return { ...state, rounds: [...state.rounds, action.round] };
     default:
       return state;
