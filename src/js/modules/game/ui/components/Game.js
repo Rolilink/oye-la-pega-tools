@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AnswerSection from './AnswerSection';
 import QuestionSection from './QuestionSection';
-import tracking from '../../../../libs/metrics';
 
 export default class Game extends React.Component {
 
@@ -18,9 +17,6 @@ export default class Game extends React.Component {
 
   componentDidMount() {
     this.props.startNewGame();
-    tracking.track('test', {
-      test: 'test',
-    });
   }
 
   render() {

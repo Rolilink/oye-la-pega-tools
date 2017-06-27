@@ -1,8 +1,12 @@
-import mixpanel from 'mixpanel-browser';
-import {
-  MIXPANEL_PROJECT_TOKEN,
-} from './constants';
+import * as keenIOModule from './keenIO';
+import constantsModule from './constants';
 
-mixpanel.init(MIXPANEL_PROJECT_TOKEN);
+export const keenIO = keenIOModule.keenIO;
+export const keenIODecorator = keenIOModule.keenIODecorator;
+export const constants = constantsModule;
 
-export default mixpanel;
+export default {
+  keenIO,
+  keenIODecorator,
+  constants,
+};
