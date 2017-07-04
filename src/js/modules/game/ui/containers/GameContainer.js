@@ -8,6 +8,13 @@ import {
   pickWinners,
   markAllAnswersAsBoring,
 } from '../../data';
+import {
+  trackAnswerShown,
+  trackQuestionShown,
+  trackQuestionAnswered,
+  trackAnswerNotSelectedWinner,
+  trackAnswerSelectedWinner,
+} from '../../metrics';
 
 const { fetchAndSetActiveDeck } = decksData;
 
@@ -79,17 +86,38 @@ class GameContainer extends React.Component {
 
   markAllAsBoring() {
     this.props.markAllAnswersAsBoring()
-      .then(() => this.startNewRound());
+      .then(({ boringAnswers, round }) => {
+        const { question, deckId } = round;
+
+        boringAnswers.forEach(answer => trackAnswerNotSelectedWinner(answer, question, deckId));
+        this.startNewRound();
+      });
   }
 
   pickWinners(selectedAnswers) {
     this.props.pickWinners(selectedAnswers)
-      .then(() => this.startNewRound());
+      .then(({ winnerAnswers, round }) => {
+        const { question, deckId } = round;
+
+        trackQuestionAnswered(question, winnerAnswers, deckId);
+        round.answers.forEach((answer) => {
+          if (!!_.find(winnerAnswers, winnerAnswer => answer.id === winnerAnswer.id)) {
+            trackAnswerSelectedWinner(answer, question, deckId);
+          } else {
+            trackAnswerNotSelectedWinner(answer, question, deckId);
+          }
+        });
+        this.startNewRound();
+      });
   }
 
   startNewRound() {
     this.setState(getInitialState());
-    this.props.setNewRound();
+    this.props.setNewRound()
+      .then(({ deck, question, answers }) => {
+        trackQuestionShown(question, deck);
+        answers.forEach(answer => trackAnswerShown(answer, deck));
+      });
   }
 
   startNewGame(deckId) {

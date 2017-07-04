@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import AnswerSection from './AnswerSection';
 import QuestionSection from './QuestionSection';
 
-
 export default class Game extends React.Component {
 
   static propTypes = {
