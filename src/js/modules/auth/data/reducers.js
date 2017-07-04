@@ -1,6 +1,6 @@
 import { actionTypes } from './actions';
 
-const initialSessionState = {
+export const initialSessionState = {
   accessToken: '',
   user: {},
 };
