@@ -1,4 +1,4 @@
-import actionTypes from './actionTypes';
+import * as actionTypes from './actionTypes';
 import * as Api from '../../../libs/api';
 import getSessionFromJWT from '../../../libs/jwt';
 
