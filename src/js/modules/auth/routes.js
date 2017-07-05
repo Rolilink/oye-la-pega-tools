@@ -8,7 +8,7 @@ export default function authRoutes(basePath) {
   return (
     <Route
       path={path.join(basePath, LOGIN_VIEW_PATH)}
-      render={({ history }) => <LoginView routerHistory={history} />}
+      render={() => <LoginView />}
     />
   );
 }

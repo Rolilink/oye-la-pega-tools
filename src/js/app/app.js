@@ -20,7 +20,7 @@ export default function createApp({ store, Router, Provider }) {
   return (
     <App>
       <Provider store={store}>
-        {Router}
+        <Router />
       </Provider>
     </App>
   );

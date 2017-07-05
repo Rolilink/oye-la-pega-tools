@@ -1,4 +1,4 @@
-import { actionTypes } from './actions';
+import * as actionTypes from './actionTypes';
 
 export const initialSessionState = {
   accessToken: '',
