@@ -8,7 +8,8 @@
     "start": "webpack-dev-server",
     "dev-server": "webpack-dev-server",
     "dev": "concurrently --kill-others \"npm run start\" \"npm run dev-server\"",
-    "test": "mocha --require test/helpers/browser.js --require test/helpers/setup.js --recursive",
+    "test": "jest",
+    "test:coverage": "npm run test -- --coverage",
     "build": "./node_modules/.bin/webpack",
     "deploy:firebase": "npm run build && ./node_modules/.bin/firebase deploy"
   },
@@ -19,6 +20,7 @@
     "dotenv-webpack": "^1.4.5",
     "html-webpack-plugin": "^2.28.0",
     "isomorphic-fetch": "^2.2.1",
+    "jest": "^20.0.4",
     "jwt-decode": "^2.2.0",
     "keen-tracking": "^1.1.4",
     "lodash": "^4.17.4",
@@ -45,9 +47,6 @@
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "chai-enzyme": "^0.6.1",
     "concurrently": "^3.4.0",
     "css-loader": "^0.28.4",
     "enzyme": "^2.8.0",
@@ -60,7 +59,6 @@
     "file-loader": "^0.11.2",
     "firebase-tools": "^3.9.1",
     "jsdom": "^9.12.0",
-    "mocha": "^3.2.0",
     "nock": "^9.0.11",
     "postcss": "^6.0.3",
     "postcss-cssnext": "^2.11.0",
@@ -69,5 +67,18 @@
     "react-addons-test-utils": "^15.5.1",
     "redux-mock-store": "^1.2.2",
     "webpack": "^2.3.3"
+  },
+  "jest": {
+    "testRegex": "(/tests/.*|\\.(test|spec))\\.(js|jsx)$",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "mapCoverage": true
   }
 }
